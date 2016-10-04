@@ -109,7 +109,7 @@ export default function transform ( code, id, isEntry, ignoreGlobal, customNamed
 
 				// we're dealing with `module.exports = ...` or `[module.]exports.foo = ...` –
 				// if this isn't top-level, we'll need to wrap the module
-				if ( programDepth > 3 ) shouldWrap = true;
+				if ( programDepth > 3 || /^Function/.test( node.right.type )) shouldWrap = true;
 
 				node.left._skip = true;
 
